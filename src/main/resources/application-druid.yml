@@ -1,0 +1,24 @@
+spring:
+  #数据库配置----------------------------------------------------------
+  #autoconfigure:
+    #exclude: com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure # 去除druid配置
+  datasource:
+    # 指定使用 Druid 数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+    dynamic:
+      druid:
+        initial-size: 5
+        min-idle: 10
+        max-active: 30
+      primary: master
+      datasource:
+        master:
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://127.0.0.1:3306/test?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
+          username: root
+          password: root
+        slave:
+          driver-class-name: com.sybase.jdbc4.jdbc.SybDriver
+          url: jdbc:sybase:Tds:192.168.21.146:5000/zxdbp_51?charset=cp936
+          username: sa
+          password: Ffcs_2018

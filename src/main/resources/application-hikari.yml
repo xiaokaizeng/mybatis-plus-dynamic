@@ -1,0 +1,29 @@
+spring:
+  #数据库配置----------------------------------------------------------
+  datasource:
+    dynamic:
+      hikari:
+        max-lifetime: 1800000
+        connection-timeout: 5000
+        idle-timeout: 3600000
+        max-pool-size: 12
+        min-idle: 4
+        connection-test-query: /**ping*/
+      primary: test
+      datasource:
+        master:
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://127.0.0.1:3306/test?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
+          username: root
+          password: root
+        slave:
+          driver-class-name: com.sybase.jdbc4.jdbc.SybDriver
+          url: jdbc:sybase:Tds:192.168.21.146:5000/zxdbp_51?charset=cp936
+          username: sa
+          password: Ffcs_2018
+
+
+
+
+
+

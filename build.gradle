@@ -1,0 +1,61 @@
+plugins {
+    id 'java-library'
+    id 'application'
+    id 'org.springframework.boot' version '2.6.3'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+    developmentOnly
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+    maven { url 'https://maven.aliyun.com/repository/central' }
+    maven { url 'https://maven.aliyun.com/repository/public' }
+    mavenCentral()
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", includes: ['*.jar'])
+
+    implementation 'mysql:mysql-connector-java:8.0.30'
+    implementation 'com.baomidou:mybatis-plus-boot-starter:3.5.2'
+    implementation "com.baomidou:dynamic-datasource-spring-boot-starter:3.5.2"
+    implementation 'com.baomidou:mybatis-plus-generator:3.5.3'
+    implementation 'org.freemarker:freemarker:2.3.31'
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+
+    //implementation 'com.alibaba:druid-spring-boot-starter:1.2.13'
+
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+    implementation 'com.google.code.gson:gson:2.9.0'
+
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    testImplementation 'junit:junit'
+}
+
+test {
+    useJUnitPlatform()
+}
